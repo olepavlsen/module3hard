@@ -8,7 +8,7 @@ def calculate_structure_sum(*d_s_s):
             res += d_s_s[i]
         elif isinstance(d_s_s[i], str):
             res += len(d_s_s[i])
-        elif isinstance(d_s_s[i], list):
+        elif isinstance(d_s_s[i], list) or isinstance(d_s_s[i], tuple):
             d_s1 = d_s_s[i]
             for j in range(len(d_s1)):
                 calculate_structure_sum(d_s1[j])
@@ -16,14 +16,10 @@ def calculate_structure_sum(*d_s_s):
             d_s2 = [*d_s_s[i].items()]
             for j in range(len(d_s2)):
                 calculate_structure_sum(d_s2[j])
-        elif isinstance(d_s_s[i], tuple):
-            d_s3 = d_s_s[i]
+        elif isinstance(d_s_s[i], set):
+            d_s3 = list(d_s_s[i])
             for j in range(len(d_s3)):
                 calculate_structure_sum(d_s3[j])
-        elif isinstance(d_s_s[i], set):
-            d_s4 = list(d_s_s[i])
-            for j in range(len(d_s4)):
-                calculate_structure_sum(d_s4[j])
         return res
 
 
